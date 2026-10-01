@@ -1,3 +1,5 @@
+python
+import google.generativeai as genai
 import os, sqlite3, requests, threading
 from flask import Flask, request, jsonify
 from datetime import datetime
