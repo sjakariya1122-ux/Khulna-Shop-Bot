@@ -49,7 +49,7 @@ def send_welcome(to):
             "action":{"buttons":[
                 {"type":"reply","reply":{"id":"PRODUCT","title":"📦 প্রোডাক্ট দেখুন"}},
                 {"type":"reply","reply":{"id":"ORDER","title":"🛒 অর্ডার করুন"}},
-                {"type":"reply":reply":{"id":"LOCATION","title":"📍 লোকেশন"}}
+                {"type":"reply","reply":{"id":"LOCATION","title":"📍 লোকেশন"}}
             ]}
         }
     })
