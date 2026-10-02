@@ -10,13 +10,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-বাকি সব কোড আগের মতোই থাকবে। ai_client = genai.Client
-app = Flask(__name__)
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
-
-    try:
+try:
         res = model.generate_content(prompt)
         return res.text[:900]
     except Exception as e:
