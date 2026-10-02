@@ -5,24 +5,24 @@ from datetime import datetime
 import google.generativeai as genai
 
 app = Flask(__name__)
-
-# --- CONFIG ---
-TOKEN = os.getenv("WA_TOKEN")
-PHONE_NUMBER_ID = os.getenv("WA_PHONE_NUMBER_ID")
-VERIFY_TOKEN = os.getenv("WA_VERIFY_TOKEN", "khulnashop123")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GRAPH_API_VERSION = "v20.0"
-ORDERS_SECRET = os.getenv("ORDERS_SECRET", "khulnashop2026")
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-1.5-flash')
 
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+বাকি সব কোড আগের মতোই থাকবে। ai_client = genai.Client
+app = Flask(__name__)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-1.5-flash')
 
-SHOP_NAME = "Khulna Shop"
-SHOP_ADDRESS = "খুলনা নিউ মার্কেট, খুলনা"
-SHOP_PHONE = "+8801XXXXXXXXX"
+    try:
+        res = model.generate_content(prompt)
+        return res.text[:900]
+    except Exception as e:
+        print(e)
+        return f"আপনার মেসেজ পেয়েছি। বিস্তারিত জানতে কল করুন: {SHOP_PHONE}"
+app = Flask(__name__)
 
-# --- DB ---
 def init_db():
     with sqlite3.connect('bot.db') as conn:
         conn.execute('''CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY, phone TEXT, message TEXT, date TEXT)''')
