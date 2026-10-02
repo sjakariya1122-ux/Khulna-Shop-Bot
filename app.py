@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 python
 import os, sqlite3, requests
 from flask import Flask, request, jsonify
